@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IDCC Catalogue — Urban Renewal Collective</title>
+  <meta name="description" content="ENDS 101 IDCC Soft Innovations Catalogue — Urban Renewal Collective" />
+
+  <style>
+:root{
+  --bg:#120815;
+  --panel:#1b0e22;
+  --panel2:#160b1d;
+  --text:#fff3fb;
+  --muted:#d7b7d9;
+  --accent:#ff5ea8;
+  --accent2:#ffb703;
+  --danger:#ff3d6a;
+  --border: rgba(255,255,255,.12);
+  --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --radius: 18px;
+  --radius2: 24px;
+  --sans: ui-serif, "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, Cambria, Times, serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+[data-theme="light"]{
+  --bg:#f7f8fd;
+  --panel:#ffffff;
+  --panel2:#ffffff;
+  --text:#0d1533;
+  --muted:#47517a;
+  --accent:#2f5cff;
+  --accent2:#10b981;
+  --danger:#e11d48;
+  --border: rgba(13,21,51,.12);
+  --shadow: 0 10px 30px rgba(13,21,51,.10);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(255,94,168,.25), transparent 55%),
+    radial-gradient(900px 500px at 85% 25%, rgba(255,183,3,.18), transparent 55%),
+    radial-gradient(700px 400px at 60% 90%, rgba(255,61,106,.15), transparent 60%),
+    var(--bg);
+  color:var(--text);
+}
+
+a{color:inherit}
+.app{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  min-height:100vh;
+}
+.sidebar{
+  position:sticky; top:0;
+  height:100vh;
+  padding:22px;
+  border-right:1px solid var(--border);
+  background: linear-gradient(180deg, rgba(16,26,51,.10), rgba(16,26,51,.02));
+  backdrop-filter: blur(10px);
+}
+[data-theme="light"] .sidebar{
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.75));
+}
+
+.brand{
+  display:flex; gap:12px; align-items:center;
+  padding:14px 14px;
+  border:1px solid var(--border);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,.03);
+}
+[data-theme="light"] .brand{background: rgba(13,21,51,.02)}
+.logo{
+  width:42px; height:42px; border-radius:14px;
+  background: linear-gradient(135deg,#ff5ea8,#ffb703,#ff3d6a);
+  display:grid; place-items:center;
+  font-weight:800;
+  color:white;
+}
+.brand h1{
+  font-size:14px; margin:0; line-height:1.1;
+  letter-spacing:.2px;
+}
+.brand p{margin:3px 0 0; font-size:12px; color:var(--muted)}
+.controls{
+  margin-top:16px;
+  display:grid; gap:10px;
+}
+.row{display:flex; gap:10px}
+.btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius: 14px;
+  cursor:pointer;
+  font-weight:650;
+  font-size:12px;
+  display:inline-flex; gap:8px; align-items:center; justify-content:center;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  user-select:none;
+}
+[data-theme="light"] .btn{background: rgba(13,21,51,.03)}
+.btn:hover{background: rgba(255,255,255,.07)}
+.btn:active{transform: translateY(1px)}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(255,94,168,.95), rgba(255,183,3,.92));
+  border-color: transparent;
+  color:#140716;
+}
+.btn.danger{
+  background: rgba(255,61,106,.12);
+  border-color: rgba(255,61,106,.35);
+}
+
+.search{
+  display:flex; gap:10px; align-items:center;
+  border:1px solid var(--border);
+  border-radius: 14px;
+  padding:10px 12px;
+  background: rgba(255,255,255,.03);
+}
+[data-theme="light"] .search{background: rgba(13,21,51,.02)}
+.search input{
+  width:100%;
+  border:0; outline:none;
+  background: transparent;
+  color:var(--text);
+  font-size:13px;
+}
+
+.nav{
+  margin-top:18px;
+  display:grid;
+  gap:8px;
+}
+.nav a{
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid transparent;
+  color:var(--muted);
+  display:flex; justify-content:space-between; align-items:center;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.nav a:hover{
+  background: rgba(255,255,255,.04);
+  border-color: var(--border);
+  color:var(--text);
+}
+
+.badge{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius: 999px;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+.footer{
+  position:absolute;
+  left:22px; right:22px; bottom:18px;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.35;
+}
+
+.main{
+  padding:28px 28px 60px;
+  max-width: 1100px;
+}
+
+.hero{
+  border:1px solid var(--border);
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.03);
+  box-shadow: var(--shadow);
+  padding:22px 22px;
+  display:grid;
+  grid-template-columns: 1.4fr .9fr;
+  gap:18px;
+  align-items:stretch;
+}
+[data-theme="light"] .hero{background: rgba(13,21,51,.02)}
+.hero h2{margin:0 0 6px; font-size:22px}
+.hero p{margin:0; color:var(--muted); line-height:1.5}
+
+.meta{
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:14px 14px;
+  background: rgba(255,255,255,.02);
+  display:grid; gap:8px;
+}
+[data-theme="light"] .meta{background: rgba(13,21,51,.02)}
+.kv{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--muted)}
+.kv b{color:var(--text); font-weight:700}
+
+.section{
+  margin-top:18px;
+  border:1px solid var(--border);
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.03);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+[data-theme="light"] .section{background: rgba(13,21,51,.02)}
+.section header{
+  padding:16px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+}
+.section header h3{margin:0; font-size:16px}
+.section header .subtitle{font-size:12px; color:var(--muted)}
+.content{padding:18px}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+}
+@media (max-width: 980px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:relative; height:auto}
+  .footer{position:relative; left:0; right:0; bottom:0; margin-top:14px}
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+}
+
+.card{
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:14px;
+  background: rgba(255,255,255,.02);
+  display:grid; gap:10px;
+  min-height: 120px;
+}
+[data-theme="light"] .card{background: rgba(255,255,255,.75)}
+.card h4{margin:0; font-size:14px}
+
+.pillrow{display:flex; gap:8px; flex-wrap:wrap}
+.pill{
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--muted);
+  background: rgba(255,255,255,.02);
+}
+
+.muted{color:var(--muted)}
+.divider{height:1px; background: var(--border); margin:14px 0}
+
+details{
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:12px 12px;
+  background: rgba(255,255,255,.02);
+}
+details + details{margin-top:10px}
+summary{
+  cursor:pointer;
+  font-weight:700;
+  display:flex; align-items:center; justify-content:space-between;
+  list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+.chev{opacity:.7}
+
+.notearea{
+  width:100%;
+  min-height:120px;
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:12px;
+  background: rgba(255,255,255,.02);
+  color:var(--text);
+  font-size:13px;
+  line-height:1.45;
+  outline:none;
+  resize: vertical;
+}
+.small{font-size:12px}
+.mono{font-family:var(--mono)}
+
+.progress{
+  height:8px; border-radius:999px;
+  background: rgba(255,255,255,.08);
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius:999px;
+  transition: width .15s ease;
+}
+
+/* modal (copy-paste text) */
+.modalbackdrop{
+  position:fixed; inset:0;
+  background: rgba(0,0,0,.55);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:18px;
+  z-index:99;
+}
+.modal{
+  max-width: 840px;
+  width:100%;
+  border-radius: var(--radius2);
+  border:1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+[data-theme="light"] .modal{background: var(--panel)}
+.modal header{
+  padding:14px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px;
+}
+.modal header h3{margin:0; font-size:14px}
+.modal .body{padding:16px}
+pre{
+  margin:0;
+  padding:14px;
+  border-radius: var(--radius);
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  overflow:auto;
+  max-height: 55vh;
+  font-size:12px;
+  line-height:1.45;
+}
+
+/* Click-to-zoom visuals */
+.zoomable{
+  cursor: zoom-in;
+  border-radius: 16px;
+  transition: transform .12s ease, filter .2s ease;
+}
+.zoomable:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* Visual modal */
+.visModalBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.62);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 120;
+}
+.visModal{
+  width: min(1100px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+.visModalHeader{
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.visModalHeader h3{
+  margin:0;
+  font-size: 13px;
+}
+.visModalBody{
+  padding: 14px;
+}
+.visModalBody svg,
+.visModalBody img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* print */
+@media print{
+  .sidebar, .controls, .footer, .btn, .search, .modalbackdrop, .visModalBackdrop {display:none !important;}
+  body{background:white !important; color:black !important;}
+  .app{grid-template-columns:1fr !important;}
+  .hero,.section,.card,details,pre,.meta{box-shadow:none !important; background:white !important;}
+  a{text-decoration:none !important; color:black !important;}
+}
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">ID</div>
+        <div>
+          <h1>IDCC Catalogue</h1>
+          <p>Urban Renewal Collective</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="search" role="search">
+          <span aria-hidden="true">🔎</span>
+          <input id="search" placeholder="Search innovations (e.g., air, kiosk, planning)…" />
+        </div>
+
+        <div class="row">
+          <button class="btn" id="toggleTheme" title="Toggle theme">🌓 Theme</button>
+          <button class="btn primary" id="printBtn" title="Export as PDF via Print">🖨️ Export</button>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="openAll">➕ Expand</button>
+          <button class="btn" id="closeAll">➖ Collapse</button>
+        </div>
+
+        <div class="progress" title="Scroll progress">
+          <div class="bar" id="bar"></div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Page navigation">
+        <a href="#memo"><span>Submission Memo</span><span class="badge">Task 1</span></a>
+        <a href="#catalogue"><span>Catalogue Overview</span><span class="badge">Task 4</span></a>
+        <a href="#product"><span>Product Innovation</span><span class="badge">#1</span></a>
+        <a href="#process"><span>Process Innovation</span><span class="badge">#2</span></a>
+        <a href="#service"><span>Service Innovation</span><span class="badge">#3</span></a>
+        <a href="#experience"><span>Experience Innovation</span><span class="badge">#4</span></a>
+        <a href="#notes"><span>Your Notes</span><span class="badge">Local</span></a>
+      </nav>
+
+      <div class="footer"></div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <section class="hero" id="top">
+        <div>
+          <h2>Catalogue of Soft Innovations</h2>
+          <p>
+            Enterprise: <b>Urban Renewal Collective</b> (Social Enterprise) — improving community well-being in urban environments through
+            environmental design + community engagement + enabling tech.
+          </p>
+          <div class="divider"></div>
+          <p class="small muted">
+            This page is designed like a “book”: a memo + an overview + 4 innovation chapters. Use the sidebar to jump around,
+            and the “Export” button to turn it into a submission PDF.
+          </p>
+        </div>
+        <div class="meta">
+          <div class="kv"><span>Student</span><b>Soham Takuri</b></div>
+          <div class="kv"><span>Course</span><b>ENDS 101</b></div>
+          <div class="kv"><span>Assignment</span><b>I-4 (IDCC)</b></div>
+          <div class="kv"><span>Date</span><b id="dateLabel">March 5, 2026</b></div>
+          <div class="kv"><span>Honor Code</span><b>Included</b></div>
+          <button class="btn" id="viewRaw" style="margin-top:8px;">🧾 View Copy-Paste Text</button>
+        </div>
+      </section>
+
+      <!-- MEMO -->
+      <section class="section" id="memo">
+        <header>
+          <div>
+            <h3>Submission Memorandum</h3>
+            <div class="subtitle">Task 1 — Stand-alone memo content embedded in the catalogue</div>
+          </div>
+          <span class="badge">Task 1</span>
+        </header>
+        <div class="content">
+          <div class="card">
+            <div class="kv"><span><b>Date:</b></span><span>March 5, 2026</span></div>
+            <div class="kv"><span><b>To:</b></span><span>Dr. V.</span></div>
+            <div class="kv"><span><b>From:</b></span><span>Soham Takuri</span></div>
+            <div class="kv"><span><b>Subject:</b></span><span>Submission I-4 (IDCC)</span></div>
+            <div class="divider"></div>
+            <div class="small">
+              <b>Aggie Honor Code Statement (verbatim):</b><br/>
+              <span class="mono">"I am submitting this assignment under the Aggie Honor Code – An Aggie does not lie, cheat or steal or tolerate those who do."</span>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="card">
+            <h4>Context</h4>
+            <p class="muted" style="margin:0; line-height:1.55;">
+              For this assignment, I selected a <b>Social Enterprise called “Urban Renewal Collective.”</b> This organization focuses on improving
+              community well-being in urban environments by combining technology, environmental design, and community engagement to create healthier
+              public spaces.
+              <br/><br/>
+              Designing innovations for a social enterprise focused on urban infrastructure is outside my personal comfort zone because my interests and
+              background are primarily in technology and software systems. Thinking about physical environments, community experiences, and social design
+              required me to explore areas beyond my typical technical mindset.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section class="section" id="catalogue">
+        <header>
+          <div>
+            <h3>Catalogue Overview</h3>
+            <div class="subtitle">Four soft innovations: Product • Process • Service • Experience</div>
+          </div>
+          <span class="badge">Task 4</span>
+        </header>
+        <div class="content">
+          <div class="grid" id="overviewGrid">
+            <!-- cards generated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCT -->
+      <section class="section innovation" id="product" data-title="AirBloom Modular Micro-Forests" data-keywords="air bloom micro forests filtration vertical garden plants sensors irrigation">
+        <header>
+          <div>
+            <h3>Product Soft Innovation — AirBloom Modular Micro-Forests</h3>
+            <div class="subtitle">Who uses it: cities, campuses, developers, community orgs</div>
+          </div>
+          <span class="badge">#1</span>
+        </header>
+        <div class="content">
+          <div class="grid">
+            <div class="card">
+              <h4>Title Page</h4>
+              <div class="pillrow">
+                <span class="pill">Product</span>
+                <span class="pill">Urban Air Quality</span>
+                <span class="pill">Green Space</span>
+                <span class="pill">Modular Install</span>
+              </div>
+              <p class="muted" style="margin:0;">
+                <b>Potential Users:</b> City governments, universities, property developers, and community organizations.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Visual Depiction (Concept)</h4>
+              <svg class="zoomable" viewBox="0 0 720 320" width="100%" height="170" role="img" aria-label="Diagram: AirBloom tower with plant layers, airflow, sensors, irrigation">
+                <defs>
+                  <linearGradient id="airbloomTower" x1="0" x2="1">
+                    <stop offset="0" stop-color="var(--accent)"/>
+                    <stop offset="1" stop-color="var(--accent2)"/>
+                  </linearGradient>
+                  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="rgba(255,255,255,.55)"></path>
+                  </marker>
+                </defs>
+
+                <rect x="0" y="0" width="720" height="320" rx="18" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+
+                <rect x="60" y="250" width="600" height="34" rx="14" fill="rgba(255,255,255,.04)" stroke="var(--border)"/>
+                <text x="72" y="272" fill="var(--muted)" font-size="12" font-family="var(--mono)">public seating ring + walkway</text>
+
+                <rect x="330" y="46" width="60" height="210" rx="20" fill="url(#airbloomTower)" opacity="0.85"/>
+                <rect x="342" y="66" width="36" height="170" rx="14" fill="rgba(0,0,0,.14)" />
+
+                <g opacity="0.95">
+                  <rect x="265" y="70" width="190" height="30" rx="14" fill="rgba(110,231,183,.16)" stroke="var(--border)"/>
+                  <rect x="270" y="110" width="180" height="30" rx="14" fill="rgba(110,231,183,.16)" stroke="var(--border)"/>
+                  <rect x="275" y="150" width="170" height="30" rx="14" fill="rgba(110,231,183,.16)" stroke="var(--border)"/>
+                  <rect x="280" y="190" width="160" height="30" rx="14" fill="rgba(110,231,183,.16)" stroke="var(--border)"/>
+                </g>
+
+                <path d="M130 130 C210 90, 250 90, 310 100" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+                <path d="M130 190 C210 230, 250 230, 310 215" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+                <path d="M410 105 C470 95, 520 105, 600 130" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+                <path d="M410 215 C470 225, 520 215, 600 190" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+                <text x="96" y="112" fill="var(--muted)" font-size="12" font-family="var(--mono)">polluted air in</text>
+                <text x="568" y="112" fill="var(--muted)" font-size="12" font-family="var(--mono)">cleaner air out</text>
+
+                <circle cx="460" cy="86" r="9" fill="rgba(122,162,255,.55)" stroke="var(--border)"/>
+                <circle cx="470" cy="206" r="9" fill="rgba(122,162,255,.55)" stroke="var(--border)"/>
+                <text x="485" y="90" fill="var(--muted)" font-size="12" font-family="var(--mono)">air-quality sensor</text>
+                <text x="495" y="210" fill="var(--muted)" font-size="12" font-family="var(--mono)">humidity/soil sensor</text>
+
+                <path d="M360 46 L360 34 L545 34" stroke="rgba(110,231,183,.55)" stroke-width="3" fill="none"/>
+                <circle cx="545" cy="34" r="6" fill="rgba(110,231,183,.65)"/>
+                <text x="558" y="38" fill="var(--muted)" font-size="12" font-family="var(--mono)">smart irrigation feed</text>
+
+                <text x="24" y="28" fill="var(--muted)" font-size="12" font-family="var(--mono)">
+                  modules = plant beds + bio-filter • core = fan/duct • sensors tune airflow + watering
+                </text>
+              </svg>
+              <p class="small muted" style="margin:0;">
+                A tall modular “micro-forest” tower covered in layered plant beds, with a seating ring around the base.
+              </p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <details open>
+            <summary>
+              Narrative Description
+              <span class="chev">▾</span>
+            </summary>
+            <p class="muted" style="line-height:1.6; margin:10px 2px 0;">
+              AirBloom Modular Micro-Forests are modular vertical structures that combine air filtration systems with dense plant ecosystems.
+              Each structure functions as a compact “micro-forest” that can be installed in urban areas such as sidewalks, plazas, and campuses.
+              <br/><br/>
+              The system filters polluted air through layered plant beds and bio-filters while also providing shaded green spaces for pedestrians.
+              Sensors monitor air quality and automatically adjust airflow and irrigation to optimize plant health and filtration performance.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Prior Works Collection (PWC)
+              <span class="chev">▾</span>
+            </summary>
+            <div style="margin-top:10px; display:grid; gap:10px;">
+              <div class="card">
+                <h4>Context & Drivers</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Cities face air pollution and limited access to nature. AirBloom targets both environmental quality and public well-being by
+                  embedding a functional “micro-forest” into high-traffic areas. This is outside my comfort zone because it requires thinking
+                  about environmental design and physical infrastructure—not just software.
+                </p>
+              </div>
+
+              <div class="card">
+                <h4>Resources Required</h4>
+                <div class="pillrow">
+                  <span class="pill">Environmental sensors</span>
+                  <span class="pill">Filtration membranes</span>
+                  <span class="pill">Modular structural frame</span>
+                  <span class="pill">Irrigation + airflow control</span>
+                  <span class="pill">Plant ecosystems</span>
+                </div>
+              </div>
+
+              <div class="card">
+                <h4>Precedents (Patent/Trademark Search Targets)</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Similar prior work includes (1) <b>vertical garden / green wall systems</b> used on building facades (often aesthetic-first),
+                  and (2) urban air-cleaning “living” installations such as <b>moss-based air purification units</b> (e.g., CityTree-style concepts),
+                  as well as (3) <b>smart air-quality monitoring networks</b> deployed in cities.
+                  <br/><br/>
+                  AirBloom’s novelty claim is the integration of <b>modular micro-forest infrastructure</b> + <b>active bio-filtration airflow</b> +
+                  <b>sensor-controlled irrigation/ventilation</b> into one deployable public-space unit, rather than a decorative wall or a standalone sensor.
+                </p>
+                <div class="divider"></div>
+                <p class="small muted" style="margin:0;">
+                  Suggested search terms (Google Patents / USPTO): “modular vertical garden air filtration”, “biofilter tower air purifier”, “moss air purification street furniture”, “smart irrigation vertical garden sensor”.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="section innovation" id="process" data-title="Adaptive Community Planning System (ACPS)" data-keywords="planning community platform voting feedback analytics dashboard city proposals participation">
+        <header>
+          <div>
+            <h3>Process Soft Innovation — Adaptive Community Planning System (ACPS)</h3>
+            <div class="subtitle">A participatory planning workflow that converts resident input into actionable planning insights</div>
+          </div>
+          <span class="badge">#2</span>
+        </header>
+
+        <div class="content">
+          <div class="grid">
+            <div class="card">
+              <h4>Title Page</h4>
+              <div class="pillrow">
+                <span class="pill">Process</span>
+                <span class="pill">Participation</span>
+                <span class="pill">Transparency</span>
+                <span class="pill">Decision Support</span>
+              </div>
+              <p class="muted" style="margin:0;">
+                <b>Potential Users:</b> City planners, urban development agencies, and local communities.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Visual Depiction (Concept)</h4>
+              <svg class="zoomable" viewBox="0 0 720 320" width="100%" height="170" role="img" aria-label="Diagram: ACPS workflow from proposals to community input to analysis to prioritized actions">
+                <defs>
+                  <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="rgba(255,255,255,.55)"></path>
+                  </marker>
+                </defs>
+
+                <rect x="0" y="0" width="720" height="320" rx="18" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="24" y="28" fill="var(--muted)" font-size="12" font-family="var(--mono)">ACPS: participatory planning pipeline</text>
+
+                <rect x="40" y="70" width="160" height="70" rx="16" fill="rgba(122,162,255,.16)" stroke="var(--border)"/>
+                <text x="58" y="98" fill="var(--text)" font-size="13" font-weight="700">City Proposal</text>
+                <text x="58" y="118" fill="var(--muted)" font-size="12" font-family="var(--mono)">bike lanes, parks, zoning…</text>
+
+                <rect x="260" y="55" width="200" height="100" rx="16" fill="rgba(110,231,183,.12)" stroke="var(--border)"/>
+                <text x="278" y="86" fill="var(--text)" font-size="13" font-weight="700">Resident Participation</text>
+                <text x="278" y="108" fill="var(--muted)" font-size="12" font-family="var(--mono)">vote • comment • submit ideas</text>
+                <circle cx="290" cy="130" r="6" fill="rgba(255,255,255,.16)"/>
+                <circle cx="315" cy="130" r="6" fill="rgba(255,255,255,.16)"/>
+                <circle cx="340" cy="130" r="6" fill="rgba(255,255,255,.16)"/>
+
+                <rect x="260" y="185" width="200" height="80" rx="16" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="278" y="214" fill="var(--text)" font-size="13" font-weight="700">Analysis Engine</text>
+                <text x="278" y="236" fill="var(--muted)" font-size="12" font-family="var(--mono)">themes • tradeoffs • equity impact</text>
+
+                <rect x="520" y="90" width="160" height="70" rx="16" fill="rgba(122,162,255,.12)" stroke="var(--border)"/>
+                <text x="538" y="118" fill="var(--text)" font-size="13" font-weight="700">Action Plan</text>
+                <text x="538" y="138" fill="var(--muted)" font-size="12" font-family="var(--mono)">prioritized projects</text>
+
+                <path d="M200 105 L260 105" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                <path d="M360 155 L360 185" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                <path d="M460 225 C520 225, 520 160, 520 125" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+
+                <rect x="40" y="175" width="160" height="90" rx="16" fill="rgba(255,255,255,.02)" stroke="var(--border)"/>
+                <text x="58" y="205" fill="var(--text)" font-size="13" font-weight="700">Transparency</text>
+                <text x="58" y="228" fill="var(--muted)" font-size="12" font-family="var(--mono)">everyone sees outcomes</text>
+                <text x="58" y="248" fill="var(--muted)" font-size="12" font-family="var(--mono)">+ why decisions happened</text>
+              </svg>
+
+              <p class="small muted" style="margin:0;">
+                A platform where residents vote/comment on proposals; planners receive synthesized insights.
+              </p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <details open>
+            <summary>Narrative Description <span class="chev">▾</span></summary>
+            <p class="muted" style="line-height:1.6; margin:10px 2px 0;">
+              The Adaptive Community Planning System is a digital platform that allows communities to participate directly in urban planning decisions.
+              Residents submit ideas, vote on design proposals, and provide feedback through an interactive interface.
+              <br/><br/>
+              The system analyzes feedback and generates planning insights for officials, helping them prioritize infrastructure changes that provide
+              the greatest community benefit while improving transparency and trust.
+            </p>
+          </details>
+
+          <details>
+            <summary>Prior Works Collection (PWC) <span class="chev">▾</span></summary>
+            <div style="margin-top:10px; display:grid; gap:10px;">
+              <div class="card">
+                <h4>Context & Drivers</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Traditional planning often relies on limited public meetings and fragmented surveys, which can miss broad community input.
+                  ACPS creates a continuous, structured participation loop.
+                </p>
+              </div>
+
+              <div class="card">
+                <h4>Resources Required</h4>
+                <div class="pillrow">
+                  <span class="pill">Web/mobile platform</span>
+                  <span class="pill">Secure voting + identity checks</span>
+                  <span class="pill">Analytics + summarization</span>
+                  <span class="pill">Community outreach</span>
+                </div>
+              </div>
+
+              <div class="card">
+                <h4>Precedents (Patent/Trademark Search Targets)</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Similar prior work includes <b>online community engagement portals</b> that collect comments/surveys for civic projects,
+                  and <b>participatory budgeting / digital public consultation systems</b> that let residents vote on proposals.
+                  <br/><br/>
+                  ACPS’s novelty claim is a full workflow that combines <b>continuous participation</b> + <b>structured analysis</b> +
+                  <b>translation into prioritized planning outputs</b> (instead of one-off surveys or unstructured comment boards).
+                </p>
+                <div class="divider"></div>
+                <p class="small muted" style="margin:0;">
+                  Suggested search terms (Google Patents / USPTO): “community engagement platform city planning voting”, “participatory budgeting software system”, “public consultation portal analytics”, “citizen feedback analysis urban planning”.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- SERVICE -->
+      <section class="section innovation" id="service" data-title="Neighborhood Resource Navigator" data-keywords="resource navigator service kiosks app food bank clinic job training guidance database underserved">
+        <header>
+          <div>
+            <h3>Service Soft Innovation — Neighborhood Resource Navigator</h3>
+            <div class="subtitle">A guided service to help residents access local essentials quickly and confidently</div>
+          </div>
+          <span class="badge">#3</span>
+        </header>
+
+        <div class="content">
+          <div class="grid">
+            <div class="card">
+              <h4>Title Page</h4>
+              <div class="pillrow">
+                <span class="pill">Service</span>
+                <span class="pill">Access</span>
+                <span class="pill">Guidance</span>
+                <span class="pill">Kiosks + App</span>
+              </div>
+              <p class="muted" style="margin:0;">
+                <b>Potential Users:</b> Residents in underserved communities.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Visual Depiction (Concept)</h4>
+              <svg class="zoomable" viewBox="0 0 720 320" width="100%" height="170" role="img" aria-label="Diagram: Resource Navigator service with kiosk and app guiding user to resources">
+                <defs>
+                  <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="rgba(255,255,255,.55)"></path>
+                  </marker>
+                </defs>
+
+                <rect x="0" y="0" width="720" height="320" rx="18" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="24" y="28" fill="var(--muted)" font-size="12" font-family="var(--mono)">Neighborhood Resource Navigator: kiosk + app → guided access</text>
+
+                <rect x="48" y="62" width="160" height="210" rx="18" fill="rgba(122,162,255,.16)" stroke="var(--border)"/>
+                <rect x="68" y="86" width="120" height="110" rx="14" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <rect x="82" y="100" width="92" height="14" rx="7" fill="rgba(255,255,255,.10)"/>
+                <rect x="82" y="124" width="70" height="14" rx="7" fill="rgba(255,255,255,.10)"/>
+                <rect x="82" y="148" width="84" height="14" rx="7" fill="rgba(255,255,255,.10)"/>
+                <rect x="86" y="210" width="84" height="18" rx="9" fill="rgba(110,231,183,.18)" stroke="var(--border)"/>
+                <text x="76" y="246" fill="var(--muted)" font-size="12" font-family="var(--mono)">public kiosk</text>
+
+                <circle cx="270" cy="150" r="18" fill="rgba(255,255,255,.10)" stroke="var(--border)"/>
+                <rect x="250" y="170" width="40" height="60" rx="16" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <text x="242" y="244" fill="var(--muted)" font-size="12" font-family="var(--mono)">user</text>
+
+                <rect x="330" y="70" width="160" height="210" rx="28" fill="rgba(110,231,183,.12)" stroke="var(--border)"/>
+                <rect x="352" y="96" width="116" height="132" rx="18" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <circle cx="410" cy="246" r="10" fill="rgba(255,255,255,.10)" stroke="var(--border)"/>
+                <text x="368" y="290" fill="var(--muted)" font-size="12" font-family="var(--mono)">mobile app</text>
+
+                <rect x="530" y="70" width="170" height="70" rx="16" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="548" y="98" fill="var(--text)" font-size="13" font-weight="700">Step 1</text>
+                <text x="548" y="120" fill="var(--muted)" font-size="12" font-family="var(--mono)">identify need + eligibility</text>
+
+                <rect x="530" y="155" width="170" height="70" rx="16" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="548" y="183" fill="var(--text)" font-size="13" font-weight="700">Step 2</text>
+                <text x="548" y="205" fill="var(--muted)" font-size="12" font-family="var(--mono)">choose nearest provider</text>
+
+                <rect x="530" y="240" width="170" height="60" rx="16" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="548" y="268" fill="var(--text)" font-size="13" font-weight="700">Step 3</text>
+                <text x="548" y="288" fill="var(--muted)" font-size="12" font-family="var(--mono)">directions + documents</text>
+
+                <path d="M208 160 L252 160" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow3)"/>
+                <path d="M290 160 L330 160" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow3)"/>
+                <path d="M490 140 L530 105" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow3)"/>
+                <path d="M490 170 L530 190" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow3)"/>
+
+                <path d="M420 126 C420 110, 444 110, 444 126 C444 146, 432 152, 432 164 C432 152, 420 146, 420 126 Z"
+                      fill="rgba(122,162,255,.45)" stroke="var(--border)"/>
+                <circle cx="432" cy="128" r="6" fill="rgba(255,255,255,.18)"/>
+                <text x="350" y="118" fill="var(--muted)" font-size="12" font-family="var(--mono)">nearby clinics/food/job help</text>
+              </svg>
+
+              <p class="small muted" style="margin:0;">
+                Interactive kiosks in public spaces + a companion mobile app for step-by-step directions.
+              </p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <details open>
+            <summary>Narrative Description <span class="chev">▾</span></summary>
+            <p class="muted" style="line-height:1.6; margin:10px 2px 0;">
+              The Neighborhood Resource Navigator is a service that helps individuals access essential services within their local area—food banks,
+              healthcare clinics, job training programs, and educational opportunities.
+              <br/><br/>
+              Users interact through a mobile app or public kiosks. The system identifies nearby resources and provides step-by-step guidance on
+              how to access them, reducing barriers caused by fragmented information.
+            </p>
+          </details>
+
+          <details>
+            <summary>Prior Works Collection (PWC) <span class="chev">▾</span></summary>
+            <div style="margin-top:10px; display:grid; gap:10px;">
+              <div class="card">
+                <h4>Context & Drivers</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Many residents struggle to locate and navigate available services. Information is scattered across organizations,
+                  creating friction and missed opportunities for help.
+                </p>
+              </div>
+
+              <div class="card">
+                <h4>Resources Required</h4>
+                <div class="pillrow">
+                  <span class="pill">App + kiosk software</span>
+                  <span class="pill">Local org partnerships</span>
+                  <span class="pill">Updated services database</span>
+                  <span class="pill">Wayfinding + accessibility design</span>
+                </div>
+              </div>
+
+              <div class="card">
+                <h4>Precedents (Patent/Trademark Search Targets)</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Similar prior work includes <b>community resource directories</b> (e.g., “211”-style service listings) and <b>social service locator apps</b>
+                  that help users find nearby assistance programs. Some systems also use <b>public information kiosks</b> for wayfinding or civic services.
+                  <br/><br/>
+                  The Navigator’s novelty claim is shifting from a static directory into a guided experience: <b>kiosk access + step-by-step instructions</b>
+                  (what to bring, eligibility, next steps) + a unified interface that reduces friction for users who may not have reliable devices or time.
+                </p>
+                <div class="divider"></div>
+                <p class="small muted" style="margin:0;">
+                  Suggested search terms (Google Patents / USPTO): “public kiosk social services locator”, “resource directory guided assistance system”, “service navigation eligibility workflow app”, “community resource kiosk software”.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="section innovation" id="experience" data-title="Future City Immersion Lab" data-keywords="future city immersion lab experience simulation projections vr community engagement planning visualization">
+        <header>
+          <div>
+            <h3>Experience Soft Innovation — Future City Immersion Lab</h3>
+            <div class="subtitle">An immersive experience to help the public “walk through” proposed city changes</div>
+          </div>
+          <span class="badge">#4</span>
+        </header>
+
+        <div class="content">
+          <div class="grid">
+            <div class="card">
+              <h4>Title Page</h4>
+              <div class="pillrow">
+                <span class="pill">Experience</span>
+                <span class="pill">Immersive</span>
+                <span class="pill">Visualization</span>
+                <span class="pill">Collaborative Design</span>
+              </div>
+              <p class="muted" style="margin:0;">
+                <b>Potential Users:</b> Students, urban planners, and community members.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Visual Depiction (Concept)</h4>
+              <svg class="zoomable" viewBox="0 0 720 320" width="100%" height="170" role="img" aria-label="Diagram: Immersion Lab room with projected city scenes and interactive what-if controls">
+                <defs>
+                  <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="rgba(255,255,255,.55)"></path>
+                  </marker>
+                </defs>
+
+                <rect x="0" y="0" width="720" height="320" rx="18" fill="rgba(255,255,255,.03)" stroke="var(--border)"/>
+                <text x="24" y="28" fill="var(--muted)" font-size="12" font-family="var(--mono)">Future City Immersion Lab: see + modify proposed city futures</text>
+
+                <rect x="40" y="60" width="440" height="220" rx="18" fill="rgba(255,255,255,.02)" stroke="var(--border)"/>
+                <text x="58" y="86" fill="var(--muted)" font-size="12" font-family="var(--mono)">immersive projection room</text>
+
+                <rect x="70" y="100" width="380" height="120" rx="16" fill="rgba(122,162,255,.10)" stroke="var(--border)"/>
+                <text x="88" y="122" fill="var(--muted)" font-size="12" font-family="var(--mono)">projected neighborhood scene</text>
+
+                <rect x="92" y="140" width="80" height="60" rx="12" fill="rgba(110,231,183,.10)" stroke="var(--border)"/>
+                <rect x="182" y="155" width="70" height="45" rx="12" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <rect x="262" y="132" width="90" height="68" rx="12" fill="rgba(110,231,183,.08)" stroke="var(--border)"/>
+                <rect x="360" y="150" width="70" height="50" rx="12" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+
+                <circle cx="160" cy="250" r="10" fill="rgba(255,255,255,.12)" stroke="var(--border)"/>
+                <circle cx="200" cy="252" r="10" fill="rgba(255,255,255,.12)" stroke="var(--border)"/>
+                <circle cx="240" cy="248" r="10" fill="rgba(255,255,255,.12)" stroke="var(--border)"/>
+                <text x="260" y="258" fill="var(--muted)" font-size="12" font-family="var(--mono)">community participants</text>
+
+                <rect x="510" y="72" width="180" height="210" rx="18" fill="rgba(110,231,183,.10)" stroke="var(--border)"/>
+                <text x="528" y="100" fill="var(--text)" font-size="13" font-weight="700">What-if Controls</text>
+                <text x="528" y="122" fill="var(--muted)" font-size="12" font-family="var(--mono)">toggle + sliders</text>
+
+                <rect x="528" y="140" width="144" height="18" rx="9" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <rect x="528" y="170" width="144" height="18" rx="9" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+                <rect x="528" y="200" width="144" height="18" rx="9" fill="rgba(255,255,255,.06)" stroke="var(--border)"/>
+
+                <circle cx="610" cy="149" r="7" fill="rgba(122,162,255,.55)"/>
+                <circle cx="565" cy="179" r="7" fill="rgba(122,162,255,.55)"/>
+                <circle cx="640" cy="209" r="7" fill="rgba(122,162,255,.55)"/>
+
+                <text x="528" y="160" fill="var(--muted)" font-size="12" font-family="var(--mono)">green space</text>
+                <text x="528" y="190" fill="var(--muted)" font-size="12" font-family="var(--mono)">traffic flow</text>
+                <text x="528" y="220" fill="var(--muted)" font-size="12" font-family="var(--mono)">housing density</text>
+
+                <path d="M510 180 C470 180, 470 160, 450 160" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow4)"/>
+                <path d="M510 210 C470 210, 470 190, 450 190" stroke="rgba(255,255,255,.55)" stroke-width="2.5" fill="none" marker-end="url(#arrow4)"/>
+              </svg>
+
+              <p class="small muted" style="margin:0;">
+                A projection room where participants explore future city scenarios and adjust design elements in real time.
+              </p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <details open>
+            <summary>Narrative Description <span class="chev">▾</span></summary>
+            <p class="muted" style="line-height:1.6; margin:10px 2px 0;">
+              The Future City Immersion Lab is an interactive experience where participants explore possible future versions of their city.
+              Using immersive environments and simulations, participants walk through digital representations of proposed urban designs.
+              <br/><br/>
+              Users can interact with the environment, modify elements, and immediately see how different decisions would change
+              their neighborhoods—making planning more understandable and participatory.
+            </p>
+          </details>
+
+          <details>
+            <summary>Prior Works Collection (PWC) <span class="chev">▾</span></summary>
+            <div style="margin-top:10px; display:grid; gap:10px;">
+              <div class="card">
+                <h4>Context & Drivers</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Planning proposals are hard to interpret when presented as technical drawings. This experience helps the public
+                  understand and discuss real tradeoffs before projects are built.
+                </p>
+              </div>
+
+              <div class="card">
+                <h4>Resources Required</h4>
+                <div class="pillrow">
+                  <span class="pill">Simulation software</span>
+                  <span class="pill">Projection/immersive hardware</span>
+                  <span class="pill">Urban modeling data</span>
+                  <span class="pill">Interactive interfaces</span>
+                </div>
+              </div>
+
+              <div class="card">
+                <h4>Precedents (Patent/Trademark Search Targets)</h4>
+                <p class="muted" style="margin:0; line-height:1.6;">
+                  Similar prior work includes <b>VR/AR architectural walkthrough systems</b> and <b>urban simulation / visualization tools</b> used by
+                  designers to preview built environments. Immersive projection rooms and interactive exhibits also exist in museums and design labs.
+                  <br/><br/>
+                  The Immersion Lab’s novelty claim is a civic-focused experience: <b>public-facing</b>, <b>collaborative</b>, and tied to planning decisions
+                  with “what-if” controls (green space, traffic flow, density) so non-experts can understand impacts and participate meaningfully.
+                </p>
+                <div class="divider"></div>
+                <p class="small muted" style="margin:0;">
+                  Suggested search terms (Google Patents / USPTO): “immersive projection room urban planning”, “virtual reality city planning public engagement”, “interactive urban simulation exhibit”, “collaborative design visualization system”.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- NOTES -->
+      <section class="section" id="notes">
+        <header>
+          <div>
+            <h3>Your Notes (Saved Locally)</h3>
+            <div class="subtitle">Anything you type here stays in your browser (localStorage)</div>
+          </div>
+          <span class="badge">Local</span>
+        </header>
+        <div class="content">
+          <textarea class="notearea" id="notesBox" placeholder="Paste the actual patent/trademark links you find here (Google Patents / USPTO), so you can copy them into each Precedents section."></textarea>
+          <div class="row" style="margin-top:10px; justify-content:flex-end;">
+            <button class="btn danger" id="clearNotes">🗑️ Clear Notes</button>
+          </div>
+        </div>
+      </section>
+
+      <div style="height:30px"></div>
+    </main>
+  </div>
+
+  <!-- MODAL: raw text copy -->
+  <div class="modalbackdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Copy-paste text modal">
+    <div class="modal">
+      <header>
+        <h3>Copy-Paste Text (for Docs/Slides)</h3>
+        <div class="row">
+          <button class="btn" id="copyAll">📋 Copy</button>
+          <button class="btn" id="closeModal">✖ Close</button>
+        </div>
+      </header>
+      <div class="body">
+        <pre id="rawText"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Zoom Modal (MOVED ABOVE SCRIPT so JS always finds it) -->
+  <div class="visModalBackdrop" id="visModalBackdrop" role="dialog" aria-modal="true" aria-label="Visual depiction zoom">
+    <div class="visModal">
+      <div class="visModalHeader">
+        <h3 id="visModalTitle">Visual Depiction</h3>
+        <button class="btn" id="visModalClose">✖ Close</button>
+      </div>
+      <div class="visModalBody" id="visModalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    // ------- data -------
+    const innovations = [
+      {
+        id: "product",
+        type: "Product",
+        title: "AirBloom Modular Micro-Forests",
+        users: "City governments, universities, property developers, and community organizations.",
+        oneLiner: "Modular vertical micro-forests that actively filter air while creating shaded public green space."
+      },
+      {
+        id: "process",
+        type: "Process",
+        title: "Adaptive Community Planning System (ACPS)",
+        users: "City planners, urban development agencies, and local communities.",
+        oneLiner: "A participatory planning workflow: resident input → analysis → prioritized planning insights."
+      },
+      {
+        id: "service",
+        type: "Service",
+        title: "Neighborhood Resource Navigator",
+        users: "Residents in underserved communities.",
+        oneLiner: "A guided service via kiosks + app to connect residents to essential local resources step-by-step."
+      },
+      {
+        id: "experience",
+        type: "Experience",
+        title: "Future City Immersion Lab",
+        users: "Students, urban planners, and community members.",
+        oneLiner: "An immersive walk-through lab where communities experience and modify proposed city futures."
+      }
+    ];
+
+    // ------- helpers -------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    // ------- overview cards -------
+    const grid = $("#overviewGrid");
+    grid.innerHTML = innovations.map(i => `
+      <div class="card" data-card-title="${i.title.toLowerCase()} ${i.type.toLowerCase()} ${i.users.toLowerCase()}">
+        <div class="pillrow">
+          <span class="pill">${i.type}</span>
+          <span class="pill">Soft Innovation</span>
+        </div>
+        <h4>${i.title}</h4>
+        <p class="muted" style="margin:0; line-height:1.55;">${i.oneLiner}</p>
+        <div class="divider"></div>
+        <p class="small muted" style="margin:0;"><b>Potential Users:</b> ${i.users}</p>
+        <div class="row" style="justify-content:flex-end; margin-top:10px;">
+          <a class="btn" href="#${i.id}">→ Open</a>
+        </div>
+      </div>
+    `).join("");
+
+    // ------- search filter (sidebar + overview + innovation sections) -------
+    const search = $("#search");
+    function applySearch(q){
+      q = q.trim().toLowerCase();
+      $$(".card[data-card-title]").forEach(card=>{
+        const hay = card.getAttribute("data-card-title");
+        card.style.display = (!q || hay.includes(q)) ? "" : "none";
+      });
+      $$(".innovation").forEach(sec=>{
+        const hay = (sec.dataset.title + " " + sec.dataset.keywords).toLowerCase();
+        sec.style.display = (!q || hay.includes(q)) ? "" : "none";
+      });
+    }
+    search.addEventListener("input", e=>applySearch(e.target.value));
+
+    // ------- theme toggle -------
+    $("#toggleTheme").addEventListener("click", ()=>{
+      const b = document.body;
+      b.setAttribute("data-theme", b.getAttribute("data-theme")==="dark" ? "light" : "dark");
+      localStorage.setItem("idcc_theme", b.getAttribute("data-theme"));
+    });
+    const savedTheme = localStorage.getItem("idcc_theme");
+    if(savedTheme) document.body.setAttribute("data-theme", savedTheme);
+
+    // ------- expand / collapse all details -------
+    $("#openAll").addEventListener("click", ()=> $$("details").forEach(d=>d.open=true));
+    $("#closeAll").addEventListener("click", ()=> $$("details").forEach(d=>d.open=false));
+
+    // ------- export/print -------
+    $("#printBtn").addEventListener("click", ()=> window.print());
+
+    // ------- scroll progress -------
+    const bar = $("#bar");
+    window.addEventListener("scroll", ()=>{
+      const doc = document.documentElement;
+      const sc = doc.scrollTop;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const pct = max ? (sc/max)*100 : 0;
+      bar.style.width = pct.toFixed(1) + "%";
+    }, {passive:true});
+
+    // ------- notes (localStorage) -------
+    const notesBox = $("#notesBox");
+    notesBox.value = localStorage.getItem("idcc_notes") || "";
+    notesBox.addEventListener("input", ()=> localStorage.setItem("idcc_notes", notesBox.value));
+    $("#clearNotes").addEventListener("click", ()=>{
+      if(confirm("Clear saved notes?")) {
+        notesBox.value = "";
+        localStorage.removeItem("idcc_notes");
+      }
+    });
+
+    // ------- raw copy modal -------
+    const modalBackdrop = $("#modalBackdrop");
+    const rawText = $("#rawText");
+
+    function buildRawText(){
+      return `SUBMISSION MEMORANDUM
+Date: March 5, 2026
+To: Dr. V.
+From: Soham Takuri
+Subject: Submission I-4 (IDCC)
+
+Aggie Honor Code Statement:
+"I am submitting this assignment under the Aggie Honor Code – An Aggie does not lie, cheat or steal or tolerate those who do."
+
+Context:
+For this assignment, I selected a Social Enterprise called “Urban Renewal Collective.” This organization focuses on improving community well-being in urban environments by combining technology, environmental design, and community engagement to create healthier public spaces.
+
+Designing innovations for a social enterprise focused on urban infrastructure is outside my personal comfort zone because my interests and background are primarily in technology and software systems. Thinking about physical environments, community experiences, and social design required me to explore areas beyond my typical technical mindset.
+
+SOFT INNOVATION 1 — PRODUCT
+Title: AirBloom Modular Micro-Forests
+Potential Users: City governments, universities, property developers, and community organizations.
+Narrative: Modular vertical structures combining air filtration with dense plant ecosystems. Filters polluted air through layered plant beds and bio-filters while providing shaded green spaces. Sensors adjust airflow and irrigation automatically.
+PWC:
+- Context & Drivers: Addresses air pollution + lack of urban green space; outside my comfort zone due to environmental/physical infrastructure design.
+- Resources: environmental sensors, filtration membranes, modular structural components, irrigation systems, plant ecosystems.
+- Precedents: Vertical gardens/green walls; moss-based air cleaning installations; city air-quality monitoring systems.
+
+SOFT INNOVATION 2 — PROCESS
+Title: Adaptive Community Planning System (ACPS)
+Potential Users: City planners, urban development agencies, and local communities.
+Narrative: A platform for residents to submit ideas, vote on proposals, and give feedback. System analyzes input and generates planning insights to improve transparency and participation.
+PWC:
+- Context & Drivers: Traditional planning collects limited input; ACPS creates continuous participation.
+- Resources: software platform, analytics, secure voting, outreach.
+- Precedents: online civic engagement portals; participatory budgeting; public consultation systems.
+
+SOFT INNOVATION 3 — SERVICE
+Title: Neighborhood Resource Navigator
+Potential Users: Residents in underserved communities.
+Narrative: App + kiosks connect users to nearby services (food banks, clinics, job training, education) with step-by-step guidance.
+PWC:
+- Context & Drivers: Resource information is fragmented; reduces barriers.
+- Resources: app/kiosk development, partnerships, services database.
+- Precedents: 211-style directories; service locator apps; public info kiosks.
+
+SOFT INNOVATION 4 — EXPERIENCE
+Title: Future City Immersion Lab
+Potential Users: Students, planners, community members.
+Narrative: Immersive simulation room to explore and modify proposed city designs; helps public understand future changes.
+PWC:
+- Context & Drivers: Technical drawings are hard to interpret; experience improves engagement.
+- Resources: simulation software, projection tech, modeling data, interactive interfaces.
+- Precedents: VR architectural walkthroughs; urban simulation visualization tools; immersive projection exhibits.`;
+    }
+
+    $("#viewRaw").addEventListener("click", ()=>{
+      rawText.textContent = buildRawText();
+      modalBackdrop.style.display = "flex";
+    });
+    $("#closeModal").addEventListener("click", ()=> modalBackdrop.style.display = "none");
+    modalBackdrop.addEventListener("click", (e)=>{
+      if(e.target === modalBackdrop) modalBackdrop.style.display = "none";
+    });
+    $("#copyAll").addEventListener("click", async ()=>{
+      try{
+        await navigator.clipboard.writeText(rawText.textContent);
+        alert("Copied!");
+      }catch(e){
+        alert("Copy failed. You can manually select + copy.");
+      }
+    });
+
+    // ---- Visual zoom modal (safe + works for SVG clicks) ----
+    const visBackdrop = document.getElementById("visModalBackdrop");
+    const visBody = document.getElementById("visModalBody");
+    const visTitle = document.getElementById("visModalTitle");
+    const visClose = document.getElementById("visModalClose");
+
+    if (visBackdrop && visBody && visTitle && visClose) {
+      function openVisualModal(el){
+        const label = el.getAttribute("aria-label") || "Visual Depiction";
+        visTitle.textContent = label;
+
+        const clone = el.cloneNode(true);
+        clone.removeAttribute("height");
+        clone.style.width = "100%";
+        clone.style.height = "auto";
+
+        visBody.innerHTML = "";
+        visBody.appendChild(clone);
+
+        visBackdrop.style.display = "flex";
+      }
+
+      function closeVisualModal(){
+        visBackdrop.style.display = "none";
+        visBody.innerHTML = "";
+      }
+
+      visClose.addEventListener("click", closeVisualModal);
+      visBackdrop.addEventListener("click", (e)=>{
+        if(e.target === visBackdrop) closeVisualModal();
+      });
+
+      document.addEventListener("click", (e)=>{
+        const zoomEl = e.target.closest(".zoomable");
+        if(zoomEl) openVisualModal(zoomEl);
+      });
+
+      document.addEventListener("keydown", (e)=>{
+        if(e.key === "Escape" && visBackdrop.style.display === "flex") closeVisualModal();
+      });
+    }
+  </script>
+</body>
+</html>
